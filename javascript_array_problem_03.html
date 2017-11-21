@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript">
-        function minimum_cost(houses) {
-          var result = 0;
-          // TODO : ì—¬ê¸°ì— ì—¬ëŸ¬ë¶„ì´ ì§ì ‘ ì½”ë”©ì„ í•´ì£¼ì„¸ìš”.
-          return result;
-        }
+    <script type="text/javascript">       
+function minimum_cost(houses) {
+        var result, sum, temp, j = 0;
+        var min = 1000;
+        for(k = 0; k < Math.pow(2, houses.length - 2) * 6; k++){//°¢ Áı¸¶´Ù µå´Â ºñ¿ëÀ» ¾È°ãÄ¡´Â Á¶°ÇÀ¸·Î ´Ù ÇÑ¹ø¾¿ ´õÇÑ °æ¿ìÀÇ¼ö
+            for(i = 0; i < houses.length; i++) {//¿©±â¼­ ÀÌÁ¦ ´õÇÏ´Â°Å¸¦ ¾È °ãÄ¡°Ô Á¶°ÇÀ» Áà¾ßÇÏ´Âµ¥....ÁË¼ÛÇÕ´Ï´Ù..
+					if(i == j && i == temp)
+						j++; 
+                	sum += houses[i][j];
+					temp = i+1;
+					//console.log(sum);
+             	}
+            if(min > sum)
+            	min = sum;
+			sum = 0;
+			console.log("min : " + min);
+      	}
+  result = min;
+  console.log(result);
+  return result;
+}
         var test_case_01 = [[26, 40, 83], [49, 60, 57], [13, 89, 99]];
         var test_case_02 = [[1, 20, 30], [50, 5, 6], [9, 3, 7]];
         var test_case_03 = [[100, 1, 100], [999, 1, 999]];
