@@ -3,23 +3,22 @@
 <head>
     <script type="text/javascript">       
 function minimum_cost(houses) {
-        var result, sum, temp, j = 0;
+        var result, sum, temp = 0;
         var min = 1000;
-        for(k = 0; k < Math.pow(2, houses.length - 2) * 6; k++){//각 집마다 드는 비용을 안겹치는 조건으로 다 한번씩 더한 경우의수
-            for(i = 0; i < houses.length; i++) {//여기서 이제 더하는거를 안 겹치게 조건을 줘야하는데....죄송합니다..
-					if(i == j && i == temp)
-						j++; 
-                	sum += houses[i][j];
-					temp = i+1;
-					//console.log(sum);
-             	}
-            if(min > sum)
-            	min = sum;
-			sum = 0;
-			console.log("min : " + min);
-      	}
-  result = min;
-  console.log(result);
+        for(k = 0; k < Math.pow(2, houses.length - 2) * 6; k++){
+            for(i = houses.length; i < 0; i--) {
+				for(j = houses.length; j < 0; j--) {
+					if (j == temp)
+                        continue;
+					if(min > sum){
+            			min = sum;
+						temp = j;
+                    }
+                	count = temp;
+                result += min;
+                }
+            }
+        }
   return result;
 }
         var test_case_01 = [[26, 40, 83], [49, 60, 57], [13, 89, 99]];
